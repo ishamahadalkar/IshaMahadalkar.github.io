@@ -58,29 +58,46 @@
                     <!-- <h2 class="major">Projects</h2> -->
                     <!-- <p>Cras mattis ante fermentum, malesuada neque vitae, eleifend erat. Phasellus non pulvinar erat. Fusce tincidunt, nisl eget mattis egestas, purus ipsum consequat orci, sit amet lobortis lorem lacus in tellus. Sed ac elementum arcu. Quisque
                         placerat auctor laoreet.</p> -->
+
+                    <!-- Add buttons for filtering -->
+                    <div id="filter-buttons">
+                        <button onclick="filterProjects('all')" id="btn-all" class="button primary small">All</button>
+                        <button onclick="filterProjects('ml')" id="btn-ml" class="button small">Machine Learning</button>
+                        <button onclick="filterProjects('sql')" id="btn-sql" class="button small">SQL</button>
+                        <button onclick="filterProjects('powerbi')" id="btn-powerbi" class="button small">Power BI</button>
+                    </div>
+                    <br>
+                    <br>
                     <section class="features">
-                        <article>
+                        <article class="sql">
                             <a href="#" class="image"><img src="images/projects/logo_covid.jpeg" alt="" /></a>
                             <h3 class="major">COVID19 Data Exploration</h3>
                             <p>This project explores COVID-19 data using SQL queries, aiming to analyze trends and patterns in infections, deaths, and vaccinations while leveraging MySQL Workbench for data manipulation and visualization.</p>
                             <a href="https://github.com/ishamahadalkar/Covid_Exploration" target="_blank" class="special">Learn more</a>
                         </article>
-                        <article>
+                        <article class="sql">
                             <a href="#" class="image"><img src="images/projects/logo_housing.jpeg" height="280px" alt="" /></a>
                             <h3 class="major">Nashville Housing Cleaning</h3>
                             <p>A comprehensive analysis of Nashville housing data, focusing on data preparation. The project aims to standardize data formats, perform population updates, and optimize data cleanliness for enhanced analysis.</p>
                             <a href="https://github.com/ishamahadalkar/Nashville_Housing" class="special" target="_blank">Learn more</a>
                         </article>
-                        <article>
+                        <article class="ml">
                             <a href="#" class="image"><img src="images/projects/logo_academic.jpeg" alt="" /></a>
                             <h3 class="major">Navigating Success: Harnessing Academic Data for Student Outcome Projections</h3>
                             <p>Utilizing machine learning, this project predicts student academic performance to aid educators in early identification of at-risk students.
                                 <br><br><a class="button primary small" href="files/Academic_Final_Paper.pdf" target="_blank">Paper</a>
                             </p>
-
                             <a href="https://github.com/ishamahadalkar/Academic_Prediction" class="special" target="_blank">Learn more</a>
                         </article>
-                        <article>
+                        <article class="powerbi">
+                            <a href="#" class="image"><img src="images/projects/logo_powerbi.JPG" height="280px" alt="" /></a>
+                            <h3 class="major">Empowering Data Excellence with Power BI</h3>
+                            <p>This project aims to analyze survey data from data professionals using Power BI for data cleaning and dashboard creation. The objective is to extract insights from the survey data and visualize key trends and patterns using
+                                dashboards.
+                            </p>
+                            <a href="https://github.com/ishamahadalkar/Data_Professionals" class="special" target="_blank">Learn more</a>
+                        </article>
+                        <article class="ml">
                             <a href="#" class="image"><img src="images/projects/logo_playlist.jpeg" alt="" /></a>
                             <h3 class="major">Data-Infused Playlist Companion</h3>
                             <p>Exploring Spotify's dataset to compare attributes of current viral hits with past classics, revealing enduring trends in music popularity across different eras. Uncovering insights into the timeless appeal of certain musical
@@ -146,6 +163,30 @@
     <script src="assets/js/breakpoints.min.js "></script>
     <script src="assets/js/util.js "></script>
     <script src="assets/js/main.js "></script>
+
+    <!-- Script for Filtering -->
+    <script>
+        function filterProjects(category) {
+            var articles = document.querySelectorAll('.features article');
+            articles.forEach(function(article) {
+                if (category === 'all' || article.classList.contains(category)) {
+                    article.style.display = 'block';
+                } else {
+                    article.style.display = 'none';
+                }
+            });
+
+            // Set all buttons to 'button small' class
+            var buttons = document.querySelectorAll('#filter-buttons button');
+            buttons.forEach(function(button) {
+                button.className = 'button small';
+            });
+
+            // Set the clicked button to 'button primary small' class
+            var clickedButton = document.getElementById('btn-' + category);
+            clickedButton.className = 'button primary small';
+        }
+    </script>
 
 </body>
 
